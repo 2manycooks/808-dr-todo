@@ -30,7 +30,13 @@ export default function AddMovie(props) {
     }
 
     const onUpdate = (id) => {
-        let todo = {title, description}
+        let todo = {title, description, completed}
+        API.patch(`/${id}/`, todo).then((res) => refreshTodos())
+    }
+
+    const onCompleted = (id) => {
+        let isCompleted = true
+        let todo = { isCompleted }
         API.patch(`/${id}/`, todo).then((res) => refreshTodos())
     }
 
@@ -49,19 +55,21 @@ export default function AddMovie(props) {
         <> 
 
             <div>
-                <p>
+                
                     {todoList.map((e) => {
                     return(
-                        <div style={{color: e.completed ? 'green' : 'red', borderRadius: '1px'}}>
+                        <div style={{color: e.completed ? 'green' : 'red', borderRadius: '1px'}} key={e.id}>
                         <h2> {e.title} </h2>
                         <p> {e.description} </p>
                         <button onClick={() => onDelete(e.id)}> Delete </button>
                         <button onClick={() => selectTodo(e.id)}> Select </button>
+                        <button onClick={() => setCompleted(true)}> Completed! </button>
                         <button onClick={() => onUpdate(e.id)}> Edit </button>
+                        
                         </div>
                     )
                     })}
-                </p>
+               
                 
             </div>
             <h1>
