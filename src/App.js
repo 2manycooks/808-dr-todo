@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from "axios"
+import AddTodo from './AddTodo'
 
 function App() {
   const [todoList, setTodoList] = useState([])
@@ -28,6 +29,7 @@ function App() {
         })}
       </p>
      </div>
+     <AddTodo todoList = {todoList}/>
     </div>
   );
 }
