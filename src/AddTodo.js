@@ -55,7 +55,7 @@ export default function AddTodo(props) {
         <> 
 
             <div>
-                
+                {/* we should take this and put it inside its own todolist component for all todos. */}
                     {todoList.map((e) => {
                     return(
                         <div style={{color: e.completed ? 'green' : 'red', borderRadius: '1px'}} key={e.id}>
@@ -73,6 +73,8 @@ export default function AddTodo(props) {
                
                 
             </div>
+
+            {/* this should be the new content of AddTodo, which we render inside of a specific todo component. */}
             <h1>
                 Add/Edit a new task!             
             </h1>

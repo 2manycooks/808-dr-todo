@@ -17,6 +17,10 @@ function App() {
 
   return (
     <div className="App">
+
+      {/* let's add browserrouter to this! How will we want to achieve this? Let's maybe think back to our labs. */}
+      {/* Probably wrap everything inside of browserrouter, and we'll probably need to refactor AddTodo as well. */}
+      {/* We should split this all up into a list of all todos and routes for specific todos. */}
      <AddTodo todoList = {todoList}/>
     </div>
   );
