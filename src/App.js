@@ -17,18 +17,6 @@ function App() {
 
   return (
     <div className="App">
-     <div>
-      <p>
-        {todoList.map((e) => {
-          return(
-            <div style={{color: e.completed ? 'green' : 'red', borderRadius: '1px'}}>
-              <h2> {e.title} </h2>
-              <p> {e.description} </p>
-            </div>
-          )
-        })}
-      </p>
-     </div>
      <AddTodo todoList = {todoList}/>
     </div>
   );

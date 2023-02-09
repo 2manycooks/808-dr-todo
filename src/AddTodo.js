@@ -30,7 +30,7 @@ export default function AddMovie(props) {
     }
 
     const onUpdate = (id) => {
-        let todo = {title}
+        let todo = {title, description}
         API.patch(`/${id}/`, todo).then((res) => refreshTodos())
     }
 
@@ -39,7 +39,7 @@ export default function AddMovie(props) {
     }
 
     const selectTodo = (id) => {
-        let todo = todoList.filter((movie) => todo.id === id)[0]
+        let todo = todoList.filter((todo) => todo.id === id)[0]
         setTitle(todo.title)
         setDescription(todo.description)
         setCompleted(todo.completed)
@@ -47,6 +47,26 @@ export default function AddMovie(props) {
 
     return (
         <> 
+
+            <div>
+                <p>
+                    {todoList.map((e) => {
+                    return(
+                        <div style={{color: e.completed ? 'green' : 'red', borderRadius: '1px'}}>
+                        <h2> {e.title} </h2>
+                        <p> {e.description} </p>
+                        <button onClick={() => onDelete(e.id)}> Delete </button>
+                        <button onClick={() => selectTodo(e.id)}> Select </button>
+                        <button onClick={() => onUpdate(e.id)}> Edit </button>
+                        </div>
+                    )
+                    })}
+                </p>
+                
+            </div>
+            <h1>
+                Add/Edit a new task!             
+            </h1>
             <form> 
                 <input 
                     value={title}
@@ -57,12 +77,13 @@ export default function AddMovie(props) {
                 />
                 <input 
                     value={description}
-                    onChange={e=> setDescription(e.taget.value)}
+                    onChange={e=> setDescription(e.target.value)}
                     placeholder={'description'}
                     type='text'
+                    name='description'
                 />
             </form>
-            <button > Submit </ button>
+            <button onClick={onSubmit}> Add </ button>
         </>
     )
 
