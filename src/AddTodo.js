@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import API from "./API"
 
-export default function AddMovie(props) {
+export default function AddTodo(props) {
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
@@ -34,11 +34,11 @@ export default function AddMovie(props) {
         API.patch(`/${id}/`, todo).then((res) => refreshTodos())
     }
 
-    const onCompleted = (id) => {
-        let isCompleted = true
-        let todo = { isCompleted }
-        API.patch(`/${id}/`, todo).then((res) => refreshTodos())
-    }
+    // const onCompleted = (id) => {
+    //     let isCompleted = true
+    //     let todo = { isCompleted }
+    //     API.patch(`/${id}/`, todo).then((res) => refreshTodos())
+    // }
 
     const onDelete = (id) => {
         API.delete(`/${id}/`).then((res) => refreshTodos())
@@ -64,6 +64,7 @@ export default function AddMovie(props) {
                         <button onClick={() => onDelete(e.id)}> Delete </button>
                         <button onClick={() => selectTodo(e.id)}> Select </button>
                         <button onClick={() => setCompleted(true)}> Completed! </button>
+                        <button onClick={() => setCompleted(false)}> Not Completed! </button>
                         <button onClick={() => onUpdate(e.id)}> Edit </button>
                         
                         </div>
